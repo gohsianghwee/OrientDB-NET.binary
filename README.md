@@ -1,19 +1,23 @@
-OrientDB-NET.binary is C#/.NET driver for [OrientDB](http://www.orientdb.org/) document/graph database which implements network binary protocol.
+Alpha Released of New Driver
+----------------------------------------------
+https://github.com/orientechnologies/OrientDB.Net.Core
 
-Check out [wiki docs](https://github.com/yojimbo87/OrientDB-NET.binary/wiki) to learn more. (NOTE: this link goes to the wiki of the repo yojimbo87/OrientDB-NET.binary, from which this code is forked)
+The .Net Driver has been completely overhauled and rewritten to follow modern standards in database driver patterns.  Please  test and add any issue to the new projects as we work to retire this implementation.
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/GoorMoon/OrientDB-NET.binary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+----------------------------------------------
+OrientDB-NET.binary is C#/.NET driver for [OrientDB](http://www.orientdb.org/) document/graph database which implements network binary protocol. For more information look at the [Documentation](http://orientdb.com/docs/master/NET.html).
 
-This fork contains the following improvements 
+Now Contains
 ---------------------------------------------
 
+* Written in DNX Release 1 for DNX and .Net 4.5.1 support
 * Better handling of ordered edges
 * Support for LoadRecord and CreateRecord operations - faster than performing the same action via SQL commands
 * Improved mapping code for generic types to/from ODocuments - much faster, avoids repeated reflection
 * Support for fetch plans using LoadRecord to pull back a whole tree of objects in one request
 * Initial support for transactional create/update/delete - should be much faster than multiple individual SQL commands
 * Better support for derived types - .ToUnique<TBase> will construct a TDerived if the database record is of type TDerived 
-* Initial support for the OrientDB 2.0 binary protocol
+* Initial support for the OrientDB 2.2 binary protocol
 * Automatic schema creation from public properties of C# types (Database.Create.Class<T>().CreateProperties().Run())
 
 Fetching a large block of records from the DB via Database.Load.ORID(orid).FetchPlan(plan) and converting them to typed objects about 6 times faster than original code using SQL commands and old mapping.
@@ -23,10 +27,10 @@ Storing a large block of records into the DB via a transaction is about 10 times
 How To Use
 ----------
 
-This code is still under active development, and is not yet production quality in all areas. There are currently no official binary downloads 
-since it is very likely that you will need to read, debug through and possibly change the driver code in order to get your project working. The 
-best way to use this package is to check out this code as a git submodule and add the Orient.Client and Orient.Tests projects to your solution.
+This code is still under active development.
 
-The unit tests should run cleanly and will start and stop OrientDB on the local machine themselves. You will likely need to change the values of
-the orientDBDir and jreDir variables in the AssemlySetup class to point correctly to your local OrientDB install and JRE/JDK for this to work 
-properly.
+For the latest build you can in the driver from [NuGet](https://www.nuget.org/packages/OrientDB-Net.binary.Innov8tive/)
+
+The unit tests should run cleanly and will start and stop OrientDB on the local machine themselves. You will likely need to change the values in the appsettings.json to point correctly to your local OrientDB install.
+
+For more information look at the [Documentation](http://orientdb.com/docs/master/NET.html).
